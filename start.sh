@@ -9,6 +9,10 @@ count=$(ls -1 alembic/versions/*.py 2>/dev/null | wc -l)
 if [ "$count" = "0" ]; then
     echo "No migrations found. Generating initial migration..."
     alembic revision --autogenerate -m "Initial migration"
+else
+    echo "Checking for model changes..."
+    # Attempt to generate a new migration
+    alembic revision --autogenerate -m "auto_migration_$(date +%Y%m%d_%H%M%S)"
 fi
 
 # Run migrations

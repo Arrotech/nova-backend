@@ -10,6 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+COPY scripts ./scripts
+RUN chmod +x scripts/*.sh
+
 COPY start-prod.sh .
 RUN chmod +x start-prod.sh
 

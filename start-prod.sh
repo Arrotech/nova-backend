@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# Add current directory to PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:.
+
 # Run migrations
 echo "Running migrations..."
 alembic upgrade head
